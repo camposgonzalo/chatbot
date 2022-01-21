@@ -1,68 +1,39 @@
 # my-chat-bot
 
-Demonstrate the core capabilities of the Microsoft Bot Framework
+Bot created using [Bot Framework](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-quickstart-create-bot?view=azure-bot-service-4.0&tabs=javascript%2Cvs)
 
-This bot has been created using [Bot Framework](https://dev.botframework.com), it shows how to create a simple bot that accepts input from the user and echoes it back.
+## Directory structure
 
-## Prerequisites
+### src
 
-- [Node.js](https://nodejs.org) version 10.14.1 or higher
+#### lib
 
-  ```bash
-  # determine node version
-  node --version
-  ```
+  - IPify
+    - Class with the method getIp to consult the ip with api
 
-## To run the bot
+#### index
 
-- Install modules
+- notifyIp
+    - Webhook that sends a message with the ip of the bot using IPify class
 
-  ```bash
-  npm install
-  ```
+- bot
+    - addConversationReference method that stores a conversation to later send a proactive message when consumming the notifyIp endpoint
 
-- Start the bot
+## Pattern
 
-  ```bash
-  npm start
-  ```
+#### mvc
 
-## Testing the bot using Bot Framework Emulator
+  - view: the bot emulator
+  - controller: the index
+  - model: IPify class
 
-[Bot Framework Emulator](https://github.com/microsoft/botframework-emulator) is a desktop application that allows bot developers to test and debug their bots on localhost or running remotely through a tunnel.
+## DecisionTree
 
-- Install the Bot Framework Emulator version 4.9.0 or greater from [here](https://github.com/Microsoft/BotFramework-Emulator/releases)
+### Directory structure
 
-### Connect to the bot using Bot Framework Emulator
+  - tree
+      - data.csv: data to analyze
+      - tree.py: code in python
+      - tree.png: decision tree
 
-- Launch Bot Framework Emulator
-- File -> Open Bot
-- Enter a Bot URL of `http://localhost:3978/api/messages`
-
-## Deploy the bot to Azure
-
-### Publishing Changes to Azure Bot Service
-
-    ```bash
-    # build the TypeScript bot before you publish
-    npm run build
-    ```
-
-To learn more about deploying a bot to Azure, see [Deploy your bot to Azure](https://aka.ms/azuredeployment) for a complete list of deployment instructions.
-
-## Further reading
-
-- [Bot Framework Documentation](https://docs.botframework.com)
-- [Bot Basics](https://docs.microsoft.com/azure/bot-service/bot-builder-basics?view=azure-bot-service-4.0)
-- [Dialogs](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-dialog?view=azure-bot-service-4.0)
-- [Gathering Input Using Prompts](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-prompts?view=azure-bot-service-4.0)
-- [Activity processing](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-activity-processing?view=azure-bot-service-4.0)
-- [Azure Bot Service Introduction](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
-- [Azure Bot Service Documentation](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
-- [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
-- [Azure Portal](https://portal.azure.com)
-- [Language Understanding using LUIS](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/)
-- [Channels and Bot Connector Service](https://docs.microsoft.com/en-us/azure/bot-service/bot-concepts?view=azure-bot-service-4.0)
-- [TypeScript](https://www.typescriptlang.org)
-- [Restify](https://www.npmjs.com/package/restify)
-- [dotenv](https://www.npmjs.com/package/dotenv)
+  ![Screenshot](tree/tree.png)
